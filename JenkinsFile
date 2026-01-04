@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                bat './gradlew test'
+                bat 'gradlew test'
             }
             post {
                 always {
@@ -17,7 +17,7 @@ pipeline {
         stage('Code Analysis') {
             steps {
                 withSonarQubeEnv('sonar') { 
-                    bat './gradlew sonarqube'
+                    bat 'gradlew sonarqube'
                 }
             }
         }
@@ -32,14 +32,14 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat './gradlew assemble javadoc'
+                bat 'gradlew assemble javadoc'
                 archiveArtifacts artifacts: 'build/libs/*.jar', fingerprint: true
             }
         }
 
         stage('Deploy') {
             steps {
-                bat './gradlew publish'
+                bat 'gradlew publish'
             }
         }
     }
