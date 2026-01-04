@@ -46,13 +46,13 @@ pipeline {
 
     post {
         success {
-            slackSend color: 'good', message: "Build Success: ${env.JOB_NAME} [${env.BUILD_NUMBER}]"
+            // slackSend color: 'good', message: "Build Success: ${env.JOB_NAME} [${env.BUILD_NUMBER}]"
             emailext body: 'The build was successful. Deployed to MyMavenRepo.', 
                      subject: "Build Success: ${env.JOB_NAME}", 
                      to: 'ma_azzouz@esi.dz'
         }
         failure {
-            slackSend color: 'danger', message: "Build Failed: ${env.JOB_NAME} [${env.BUILD_NUMBER}]"
+            // slackSend color: 'danger', message: "Build Failed: ${env.JOB_NAME} [${env.BUILD_NUMBER}]"
             emailext body: 'The build failed. Check Jenkins logs.', 
                      subject: "Build Failed: ${env.JOB_NAME}", 
                      to: 'ma_azzouz@esi.dz'
